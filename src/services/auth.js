@@ -1,7 +1,7 @@
 const Users = require('../db/model/modelUser');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const STATUS_CODES = require('../common/constants');
+const { STATUS_CODES } = require('../common/constants');
 
 const { SALTROUNDS, JWT_SECRET, JWT_EXPIRES_IN } = process.env;
 
@@ -9,7 +9,7 @@ async function registration(body) {
 	const { password } = body;
 	const hashPassword = bcrypt.hashSync(password, +SALTROUNDS);
 	const { name, email } = await saveToDB({ ...body, password: hashPassword });
-	return { name, email };
+	return { email, name };
 }
 
 async function login(body) {

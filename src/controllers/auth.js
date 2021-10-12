@@ -1,4 +1,4 @@
-const STATUS_CODES = require('../common/constants');
+const { STATUS_CODES } = require('../common/constants');
 const auth = require('../services/auth');
 const change = require('../services/update');
 
@@ -25,8 +25,8 @@ async function login(req, res, next) {
 async function updateUsers(req, res, next) {
 	const { body } = req;
 	try {
-		const updateUser = await change.put(body);
-		res.status(STATUS_CODES.OK).json({ updateUser });
+		const data = await change.put(body);
+		res.status(STATUS_CODES.OK).json({ data });
 	} catch (err) {
 		next(err);
 	}
@@ -34,8 +34,8 @@ async function updateUsers(req, res, next) {
 async function deleteUsers(req, res, next) {
 	const { body } = req;
 	try {
-		const deleteUser = await change.delet(body);
-		res.status(STATUS_CODES.OK).json({ deleteUser });
+		const data = await change.removeUser(body);
+		res.status(STATUS_CODES.OK).json({ data });
 	} catch (err) {
 		next(err);
 	}

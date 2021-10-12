@@ -13,12 +13,12 @@ async function put(body) {
 	return { name, lastName };
 }
 
-async function delet(body) {
+async function removeUser(body) {
 	const { name } = body;
 	return Users.findOneAndDelete({ name: name });
 }
 
 module.exports = {
 	put,
-	delet,
+	removeUser,
 };
