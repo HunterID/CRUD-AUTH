@@ -39,4 +39,8 @@ async function findUser(email) {
 	return Users.findOne({ email });
 }
 
-module.exports = { registration, login, findUser };
+async function getUsers() {
+	return Users.find({});
+}
+
+module.exports = { registration, login, findUser, getUsers };

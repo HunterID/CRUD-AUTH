@@ -41,4 +41,13 @@ async function deleteUsers(req, res, next) {
 	}
 }
 
-module.exports = { registration, login, updateUsers, deleteUsers };
+async function allUsers(req, res, next) {
+	try {
+		const Users = await auth.getUsers();
+		res.status(STATUS_CODES.OK).json({ Users });
+	} catch (err) {
+		next(err);
+	}
+}
+
+module.exports = { registration, login, updateUsers, deleteUsers, allUsers };
