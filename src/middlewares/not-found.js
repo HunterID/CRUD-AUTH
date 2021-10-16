@@ -1,5 +1,8 @@
-const notFound = (req, res) => {
-	res.status(404).send('Route does not exits');
-};
+const { STATUS_CODES } = require('../common/constants');
+const HttpException = require('../errors/CustomAPIError');
 
-module.exports = notFound;
+async function notFound(req, res, next) {
+	res.send(new HttpException('Page Not Found'));
+}
+
+module.exports = { notFound };
