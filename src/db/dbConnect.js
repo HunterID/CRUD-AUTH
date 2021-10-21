@@ -8,14 +8,14 @@ const options = {
 };
 
 function dbConnect() {
-	mongoose
-		.connect(MongoURI, options)
-		.then(() => {
-			console.log('Mongo start...');
-		})
-		.catch(err => {
-			console.log(err);
-		});
+    mongoose
+      .connect(MongoURI, options)
+      .then(() => {
+	console.log('Mongo start...');
+    })
+      .catch(err => {
+	console.log(err);
+    });
 }
 
 module.exports = dbConnect;
