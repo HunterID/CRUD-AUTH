@@ -8,8 +8,7 @@ const options = {
 };
 
 function dbConnect() {
-    mongoose
-      .connect(MongoURI, options)
+    mongoose.connect(MongoURI, options)
       .then(() => {
 	console.log('Mongo start...');
     })
